@@ -60,7 +60,7 @@ class SpotifyController extends Controller
         } else {
             imagettftext($im, 72, 0, 512, 160, imagecolorallocate($im, 246, 150, 115), '../storage/app/arial.ttf', (strlen($song->item->name) >= 32) ? substr($song->item->name, 0, 32).'...' : $song->item->name);
             imagecolorallocate( $im, 0, 0, 0 );
-            imagettftext($im, 50, 0, 512, 296, imagecolorallocate($im, 0, 0, 0), '../storage/app/arial.ttf', (strlen($song->item->album->name) >= 32) ? substr($song->item->album->name, 0, 32).'...' : $song->item->album->name);
+            imagettftext($im, 50, 0, 512, 347, imagecolorallocate($im, 0, 0, 0), '../storage/app/arial.ttf', (strlen($song->item->album->name) >= 32) ? substr($song->item->album->name, 0, 32).'...' : $song->item->album->name);
             imagecolorallocate( $im, 0, 0, 0 );
             imagettftext($im, 72, 0, 512, 440, imagecolorallocate($im, 0, 0, 0), '../storage/app/arial.ttf', (strlen($song->item->album->artists[0]->name) >= 32) ? substr($song->item->album->artists[0]->name, 0, 32).'...' : $song->item->album->artists[0]->name);
             imagecolorallocate( $im, 0, 0, 0 );
