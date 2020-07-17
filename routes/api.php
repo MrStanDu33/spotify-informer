@@ -13,4 +13,4 @@
 |
 */
 
-$router->get('/', 'App\Http\Controllers\SpotifyController@getPlayingNow');
+$router->get('/', 'SpotifyController@getPlayingNow');

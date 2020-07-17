@@ -13,6 +13,4 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return '';
-});
+$router->get('/', 'SpotifyController@redirectToSpotifyTrack');

@@ -79,9 +79,6 @@ class SpotifyController extends Controller
     private function imageroundedrectangle(&$img,$x,$y,$cx,$cy,$rad,$col)
     {
 
-
-
-
         imagefilledrectangle($img,$x,$y+$rad,$cx,$cy-$rad,$col);
         imagefilledrectangle($img,$x+$rad,$y,$cx-$rad,$cy,$col);
 
@@ -95,5 +92,11 @@ class SpotifyController extends Controller
         imagefilledellipse($img, $cx-$rad, $y+$rad, $rad*2, $dia, $col);
 
         return true;
+    }
+
+    public function redirectToSpotifyTrack() {
+        $song = $this->api->getMyCurrentTrack();
+        header('Location: '.$song->item->external_urls->spotify);
+        die();
     }
 }
