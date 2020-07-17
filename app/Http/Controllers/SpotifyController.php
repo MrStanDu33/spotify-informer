@@ -63,9 +63,9 @@ class SpotifyController extends Controller
             imagecopy($im, $coverData, 72, 72, 0, 0, 368, 368);
             imagecolorallocate( $im, 0, 0, 0 );
         }
-        $output = $this->gdImgToHTML( $im );
+        header("Content-Type: image/png");
+        imagepng($im);
         imagedestroy( $im );
-        echo $output;
     }
 
     private function imageroundedrectangle(&$img, $x1, $y1, $x2, $y2, $r, $color)
@@ -91,27 +91,5 @@ class SpotifyController extends Controller
         imagearc($img, $x1+$r, $y2-$r, $r*2, $r*2, 90, 180, $color);
 
         return true;
-    }
-
-    private function gdImgToHTML( $gdImg, $format='jpg' ) {
-
-        // Validate Format
-        if( in_array( $format, array( 'jpg', 'jpeg', 'png', 'gif' ) ) ) {
-            ob_start();
-            imagepng( $gdImg );
-            $data = ob_get_contents();
-            ob_end_clean();
-            // Check for gd errors / buffer errors
-            if( !empty( $data ) ) {
-                $data = base64_encode( $data );
-                // Check for base64 errors
-                if ( $data !== false ) {
-                    // Success
-                    return "<img src='data:image/$format;base64,$data'>";
-                }
-            }
-        }
-        // Failure
-        return '<img>';
     }
 }
